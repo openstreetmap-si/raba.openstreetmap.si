@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--meta charset="UTF-8"-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RABA import</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" >
+<link rel="icon" href="/favicon.ico" type="image/x-icon" >
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" >
+<link rel="stylesheet" href="L.Control.MousePosition.css" >
+
+<link  rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" >
+<link  rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" >
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" >
+
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+<script type="text/javascript" src="leaflet-providers.js"></script>
+
+<script type="text/javascript" src="zlib_and_gzip.min.js"></script>
+<script type="text/javascript" src="shp.js"></script>
+<script type="text/javascript" src="catiline.js"></script>
+<script type="text/javascript" src="leaflet.shpfile.js"></script>
+
+<script type="text/javascript" src="L.Control.MousePosition.js"></script>
+<script type="text/javascript" src="leaflet-hash.js"></script>
+<script type="text/javascript" src="josmRemote.js"></script>
+<style>
+html,body{height:100%}
+
+.container {
+    height:100%;
+    width:100%;
+    min-width:100%;
+	padding:0px;
+}
+
+#map {
+    width:100%;
+    min-width:100%;
+    height:100%;
+    min-height:100%;
+}
+</style>
+<script type="text/javascript">
+//<!-- <![CDATA[
+//this should be dynamically updated:
+var SplitsAvailable = [ 29, 36, 37, 42, 43, 49, 393, 419, 420, 446, 1447, 1491, 1492, 1535, 3528, 3543, 3544, 3559 ];
+
+function buildDialog(splitId) {
+	var str= "Split <b>"+splitId +"<\/b><br>";
+	//str += "<br/>Zoom";
+	//str += "<br/><a href=\"javascript:showSplit("+splitId+")\">Show<\/a>";
+	//str += "<br/><i title=\"Show\" onclick=\"showSplit("+splitId+")\" class=\"fa fa-eye fa-2x\"><\/i>";
+	//str += "<br/><i title=\"Show\" onclick=\"showSplit("+splitId+");\" class=\"fa fa-eye fa-2x fa-border\"><\/i>";
+	//str += " <button title=\"Show\" onclick=\"showSplit("+splitId+");\" class=\"btn btn-default btn-lg\"><i class=\"fa fa-eye fa-2x\"><\/i><\/button>";
+	str += "<div class=\"btn-group\" style=\"width:110px\">";
+	str += "<a title=\"Show\" onclick=\"showSplit("+splitId+");\" class=\"btn btn-default\"><i class=\"fa fa-2x fa-eye\"><\/i><\/a>";
+//<i title=\"Show\" onclick=\"showSplit("+splitId+");\" class=\"fa-border\"><\/i>";
+
+	//str += " <button title=\"Load to JOSM\" onclick=\"josmImportWithMeta("+splitId+")\" class=\"btn btn-default btn-lg\"><i class=\"fa fa-cloud-download fa-2x\"><\/i><\/button>";
+	//str += "<a title=\"Load to JOSM\" onclick=\"josmImportWithMeta("+splitId+")\" class=\"btn btn-default\"><i class=\"fa fa-2x fa-cloud-download\"><\/i><\/a>";
+	//str += "<br/><a href=\"javascript:josmImportWithMeta("+splitId+")\">Load to JOSM<\/a>";
+	str += "<\/div>";
+	return str
+}
+
+function showSplit(id) {
+	var splitLayer = loadSplit(id);
+	allSplitsLayer.addLayer(splitLayer);
+}
+
+function josmImportWithMeta(splitId) {
+	var josmUri=location.origin + '/data-20140911/raba'+splitId+'diss.osm.zip';
+	//josmLoadAndZoom(josmUri, "RABA-KGZ", "Importing split " + splitId + " from RABA-KGZ");
+	//josmLoadAndZoom(0,0,0,0, "RABA-KGZ", "Importing split " + splitId + " from RABA-KGZ");
+	josmImport(josmUri);
+}
+
+
+function loadGrid() {
+	// split grid
+	var myIcon = L.divIcon({className: 'my-div-icon'});
+
+	var splitGridShp = new L.Shapefile('grid/newSplitID_improve1.zip',{onEachFeature:function(feature, layer) {
+    	if (feature.properties) {
+			var newSplitID = feature.properties["newSplitID"];
+			//console.log(newSplitID);
+			//console.log(feature.properties["newSplitID"] + ': ' + layer.getBounds());
+			//L.marker([50.505, 30.57], {icon: myIcon}).addTo(map);
+			//L.marker(feature.getLatLng(), {icon: myIcon, html: "foo"}).addTo(map);
+			//L.marker(layer.getLatLng(), {icon: myIcon}).addTo(map);
+			//layer.bindPopup("Split " + newSplitID);
+			layer.bindPopup(buildDialog(newSplitID));
+			//layer.bindPopup(newSplitID,{maxHeight:200});
+			//if(splitGridShp) {
+			//	map.fitBounds(splitGridShp.getBounds());
+			//}
+			//map.fitBounds(layer.getBounds());
+
+    	}
+		else { console.log("no properties?"); }
+	//}, style:function(feature, layer) { return "";}};
+	//}});
+	}, style:function(feature, layer) { 
+		//return "";
+		//if(feature.properties && $.inArray( feature.properties["newSplitID"], SplitsAvailable ) != -1)
+		if(feature.properties && feature.properties["newSplitID"]<=3640)
+		{
+			return {color: "red", weight:0.5, fill: true, fillOpacity: 0.0};
+		}
+		return {color: "magenta", weight:0.5, fill: true, fillOpacity: 0.2};
+	}, filter:function(feature, layer) { 
+		return true;
+		/*
+		if(feature.properties && feature.properties["newSplitID"] < 100 )
+		{
+			return true;
+		}
+		return false;
+		*/
+	}, load:function(layer) { 
+		map.fitBounds(layer.getBounds());
+
+		console.log("loaded.");
+		//return true;
+	}});
+	 //splitGridShp.addTo(map);
+	 splitGridShp.once("load", function(){
+	  console.log("finished loaded splitGridShp");
+	 });
+	 splitGridShp.on("load", function(){
+	  console.log("2finished loaded splitGridShp");
+	 });
+	 
+	 return splitGridShp;
+}
+
+function loadSplit(splitId) {
+	// dissolved split details 
+	var featureStyle = {};
+
+	featureStyle["RABA_ID:1100"] = {color: "#B3885D", weight:2, fill: true, fillOpacity: 0.2};
+	featureStyle["landuse:farmland|source:RABA-KGZ|natural:"] = {color: "brown", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:1160"] = {color: "#CCCC00", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:1180"] = {color: "#CCFF33", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:1190"] = {color: "#66FF99", weight:2, fill: true, fillOpacity: 0.2};
+
+
+	featureStyle["RABA_ID:1211"] = {color: "#E598F5", weight:2, fill: true, fillOpacity: 0.2};
+	featureStyle["landuse:vineyard|source:RABA-KGZ|natural:"] = {color: "#ff4444", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:1212"] = {color: "#E598F5", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:1221"] = {color: "#B5E359", weight:2, fill: true, fillOpacity: 0.2};
+	featureStyle["RABA_ID:1222"] = {color: "#ACE359", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:1230"] = {color: "#93D61E", weight:2, fill: true, fillOpacity: 0.2};
+	featureStyle["RABA_ID:1240"] = {color: "#7DD61E", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:1300"] = {color: "#aaffaa", weight:2, fill: true, fillOpacity: 0.2};
+	featureStyle["landuse:meadow|source:RABA-KGZ|natural:"] = {color: "#aaffaa", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:1321"] = {color: "#AAFFC8", weight:2, fill: true, fillOpacity: 0.2};
+
+
+	featureStyle["RABA_ID:1410"] = {color: "#8BD683", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:1420"] = {color: "#5DB553", weight:2, fill: true, fillOpacity: 0.2};
+
+
+	featureStyle["RABA_ID:1500"] = {color: "#7CD957", weight:2, fill: true, fillOpacity: 0.2};
+	featureStyle["landuse:|source:RABA-KGZ|natural:scrub"] = {color: "#66ff66", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:1600"] = {color: "#90A887", weight:2, fill: true, fillOpacity: 0.2};
+	featureStyle["RABA_ID:1800"] = {color: "#79BF71", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:2000"] = {color: "#229922", weight:2, fill: true, fillOpacity: 0.2};
+	featureStyle["landuse:forest|source:RABA-KGZ|natural:"] = {color: "#22ff22", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:3000"] = {color: "red", weight:1, opacity:0.5, fill: true, fillOpacity: 0.0};
+
+	featureStyle["RABA_ID:4100"] = {color: "#57CFB1", weight:2, fill: true, fillOpacity: 0.2};
+	featureStyle["RABA_ID:4210"] = {color: "#29C28F", weight:2, fill: true, fillOpacity: 0.2};
+	featureStyle["RABA_ID:4220"] = {color: "#57CFB9", weight:2, fill: true, fillOpacity: 0.2};
+
+
+
+	featureStyle["RABA_ID:5000"] = {color: "#D9FFD9", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:6000"] = {color: "#E6E6E6", weight:2, fill: true, fillOpacity: 0.2};
+
+	featureStyle["RABA_ID:7000"] = {color: "#4444ff", weight:2, fill: true, fillOpacity: 0.2};
+
+	var shpUrl = 'data-20140911/raba' + splitId + 'diss.zip';
+	console.log("Loading: " + shpUrl);
+	var shpfile = new L.Shapefile(shpUrl, {onEachFeature:function(feature, layer) {
+    	if (feature.properties) {
+			layer.bindPopup(buildDialog(splitId) +"<br>"+Object.keys(feature.properties).map(function(k){
+				return k + ": " + feature.properties[k] ;
+			}).join("<br />"),{maxHeight:200});
+    	}
+	}, style:function(feature, layer) { 
+		//return "";
+		if(feature.properties)
+		{
+			var featureKey = Object.keys(feature.properties).map(function(k){
+						return k + ":" + feature.properties[k] ;
+					}).join("|");
+			
+			if ( featureStyle[featureKey]==undefined ) {
+				console.log("Style not found for: " + featureKey);
+				return {color: "magenta", weight:1, fill: true, fillOpacity: 0.3};
+
+			}
+			return featureStyle[featureKey];
+		}
+		return {color: "magenta", weight:1, fill: true, fillOpacity: 0.0};
+	}});
+	 shpfile.once("load", function(){
+	  console.log("finished loaded shpfile");
+	 });
+	return shpfile;
+}
+
+var allSplitsLayer = L.layerGroup();
+var layerControl;
+
+function show() {
+// initialize the map on the "map" div with a given center and zoom
+var map = L.map('map', {
+    center: [46.05, 14.5],
+    zoom: 9,
+	//maxBounds: [[45.4, 13.3],[46.9, 16.63]],
+	maxBounds: [[45, 13],[47, 17]],
+	minZoom: 8
+});
+
+var osm = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+
+
+//var hereLayer = L.tileLayer.provider('HERE.satelliteDay');
+var esriLayer = L.tileLayer.provider('Esri.WorldImagery');
+var mtbLayer = L.tileLayer.provider('MtbMap');
+var watercolor = L.tileLayer.provider('Stamen.Watercolor');
+var osmfrLayer = L.tileLayer.provider('OpenStreetMap.osmfr');
+var mapQuestOpenOSMLayer = L.tileLayer.provider('MapQuestOpen.OSM');
+//var mapQuestOpenAerialLayer = L.tileLayer.provider('MapQuestOpen.Aerial');
+var blankMapLayer = L.tileLayer.provider('BlankMap');
+
+
+var openSnowMapLayer = L.tileLayer.provider('OpenStreetMap.openSnowMap');
+openSnowMapLayer.addTo(map);
+
+
+L.control.scale({imperial: false, maxWidth: 200}).addTo(map);
+L.control.mousePosition().addTo(map);
+map.attributionControl.addAttribution("<a href=\"https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ\">RABA overlay<\/a> courtesy of <a href=\"http://www.mkgp.gov.si/\">Ministrstvo za kmetijstvo, gozdarstvo in prehrano<\/a>");
+var gridLayer = loadGrid();
+gridLayer.addTo(map);
+
+//var allSplitsLayer = L.layerGroup();
+$.each(SplitsAvailable, function( index, value ) {
+	//alert( index + ": " + value );
+	//var splitLayer = loadSplit(value);
+	//allSplitsLayer.addLayer(splitLayer)
+});
+allSplitsLayer.addTo(map);
+//var splitLayer = loadSplit(43);
+//splitLayer.addTo(map);
+
+var baseLayers = {
+//    "Mapbox": mapbox,
+    "OSM Mapnik": osm,
+    //"HERE": hereLayer,
+	"ESRI satellite": esriLayer,
+	"Mountainbike": mtbLayer,
+	"OpenStreetMap.fr": osmfrLayer,
+	"MapQuestOpen": mapQuestOpenOSMLayer,
+	//"MapQuestOpen Aerial": mapQuestOpenAerialLayer,
+	"Watercolor": watercolor,
+	"Blank :)": blankMapLayer
+
+};
+
+var overlays = {
+       "Split grid": gridLayer,
+       "Split detail": allSplitsLayer,
+	   "OpenSnowMap": openSnowMapLayer
+};
+
+layerControl = L.control.layers(baseLayers, overlays).addTo(map);
+var hash = new L.Hash(map);
+	
+josmGetVersion();
+}
+
+function unloadAllSplits(){
+	allSplitsLayer.clearLayers();
+	//layerControl.removeLayer(allSplitsLayer)
+	//allSplitsLayer = L.layerGroup();
+	//allSplitsLayer.addTo(map);
+}
+// --> ]]>
+</script>
+</head>
+<body onload="show()">
+<div class="container">
+<div class="leaflet-bar leaflet-container" style="position:fixed;left:30%;right:30%;top:-8px;z-index:1000;background:white;text-align:center;padding-top:8px;font-weight:bold">
+	RABA import overview
+</div>
+<div class="xxleaflet-bar leaflet-container" style="position:fixed;max-width:100px;right:-8px;top:100px;z-index:1000;background:white;xxtext-align:center;padding:8px;padding-right:16px;box-shadow: 0 1px 5px rgba(0,0,0,0.65);border-radius: 4px;">
+	<a href="https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ" target="_blank">About RABA import</a>
+	<br>
+	<a href="http://forum.openstreetmap.org/viewtopic.php?id=27289" target="_blank">Forum</a>
+	<br>
+	<!-- JOSM Remote: <span id="josmRemoteInfo"><i class="fa fa-exclamation-circle warning"></i> Not found - <a href="http://josm.openstreetmap.de/wiki/Help/Preferences/RemoteControl">help</a></span> -->
+	<br>
+	<!--<a class="btn" onclick="unloadAllSplits()"><i class="fa fa-trash fa-lg"></i>Unload all splits</a>-->
+
+	<div class="btn-group" style="width:110px">
+		<a class="btn btn-default" onclick="unloadAllSplits()" title="Unload all splits"><i class="fa fa-trash fa-2x"></i></a>
+	</div>
+
+
+</div>
+<div id="map"></div>
+</div>
+</body>
+</html>

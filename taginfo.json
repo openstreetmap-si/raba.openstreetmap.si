@@ -1,0 +1,31 @@
+{
+	"data_format": 1,
+	"data_url": "http://raba.openstreetmap.si/taginfo.json",
+	"project": {
+		"name": "RABA-KGZ import",
+		"description": "Slovenia Landcover Import - RABA-KGZ",
+		"project_url": "https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ",
+		"icon_url": "http://raba.openstreetmap.si/RABA-KGZ-icon.png",
+		"contact_name": "Stefan Baebler",
+		"contact_email": "stefan dot baebler atsign g-mail"
+	},
+	"tags" : [
+		{
+			"key": "source",
+			"value": "RABA-KGZ",
+			"description": "Source of landuse data import attribution to Ministry of Agriculture, Forestry and Food",
+			"doc_url": "https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ#License",
+			"icon_url": "http://raba.openstreetmap.si/RABA-KGZ-icon.png"
+		},
+		{
+			"key": "raba:id",
+			"object_types": ["relation","way"],
+			"description": "Preserved the RABA_ID attribute from the source",
+			"icon_url": "http://raba.openstreetmap.si/RABA-KGZ-icon.png"
+		},
+		{
+			"key": "source:date",
+			"description": "Date of the source shapefile release in ISO 8601 format"
+		}
+	]
+}
