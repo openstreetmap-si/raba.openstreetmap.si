@@ -20,6 +20,11 @@
 
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+<link rel="stylesheet" href="//bmcbride.github.io/bootleaf/assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.css">
+<link rel="stylesheet" href="//bmcbride.github.io/bootleaf/assets/css/app.css">
+<!-- <script src="//bmcbride.github.io/bootleaf/assets/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.js"></script> -->
+<!-- <script src="//bmcbride.github.io/bootleaf/assets/js/app.js"></script> -->
+
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
 <script type="text/javascript" src="leaflet-providers.js"></script>
 
@@ -34,18 +39,19 @@
 <style>
 html,body{height:100%}
 
-.container {
+.container-fluid {
     height:100%;
-    width:100%;
-    min-width:100%;
-	padding:0px;
+	xxxoverflow-y: hidden;
+    xxxwidth:100%;
+    xxxmin-width:100%;
+	xxpadding:0px;
 }
 
 #map {
     width:100%;
     min-width:100%;
     height:100%;
-    min-height:100%;
+    min-height:100px;
 }
 </style>
 <script type="text/javascript">
@@ -53,7 +59,7 @@ html,body{height:100%}
 //this should be dynamically updated:
 var SplitsAvailable = [ 29, 36, 37, 42, 43, 49, 393, 419, 420, 446, 1447, 1491, 1492, 1535, 3528, 3543, 3544, 3559 ];
 
-function buildDialog(splitId) {
+function buildDialog(splitId, layer) {
 	var str= "Split <b>"+splitId +"<\/b><br>";
 	//str += "<br/>Zoom";
 	//str += "<br/><a href=\"javascript:showSplit("+splitId+")\">Show<\/a>";
@@ -61,12 +67,15 @@ function buildDialog(splitId) {
 	//str += "<br/><i title=\"Show\" onclick=\"showSplit("+splitId+");\" class=\"fa fa-eye fa-2x fa-border\"><\/i>";
 	//str += " <button title=\"Show\" onclick=\"showSplit("+splitId+");\" class=\"btn btn-default btn-lg\"><i class=\"fa fa-eye fa-2x\"><\/i><\/button>";
 	str += "<div class=\"btn-group\" style=\"width:110px\">";
+	//str += "<a title=\"Fit to screen\" onclick=\"console.log(layer);//showSplit("+splitId+");\" class=\"btn btn-default\"><i class=\"fa fa-2x fa-expand\"><\/i><\/a>";
 	str += "<a title=\"Show\" onclick=\"showSplit("+splitId+");\" class=\"btn btn-default\"><i class=\"fa fa-2x fa-eye\"><\/i><\/a>";
 //<i title=\"Show\" onclick=\"showSplit("+splitId+");\" class=\"fa-border\"><\/i>";
 
 	//str += " <button title=\"Load to JOSM\" onclick=\"josmImportWithMeta("+splitId+")\" class=\"btn btn-default btn-lg\"><i class=\"fa fa-cloud-download fa-2x\"><\/i><\/button>";
 	//str += "<a title=\"Load to JOSM\" onclick=\"josmImportWithMeta("+splitId+")\" class=\"btn btn-default\"><i class=\"fa fa-2x fa-cloud-download\"><\/i><\/a>";
+	//str += "<a title=\"Load to JOSM\" onclick=\"josmImportWithMeta("+splitId+")\" class=\"btn btn-default\"><i class=\"fa fa-2x fa-edit\"><\/i><\/a>";
 	//str += "<br/><a href=\"javascript:josmImportWithMeta("+splitId+")\">Load to JOSM<\/a>";
+	//str += "<a title=\"Delete from map\" onclick=\"//josmImportWithMeta("+splitId+")\" class=\"btn btn-default\"><i class=\"fa fa-2x fa-trash\"><\/i><\/a>";
 	str += "<\/div>";
 	return str
 }
@@ -77,7 +86,8 @@ function showSplit(id) {
 }
 
 function josmImportWithMeta(splitId) {
-	var josmUri=location.origin + '/data-20140911/raba'+splitId+'diss.osm.zip';
+	//var josmUri=location.origin + '/data-20140911/raba'+splitId+'diss.osm.zip';
+	var josmUri=location.origin + '/RabaSplits_20150113_EPSG4326/raba'+splitId+'dissJosm.zip';
 	//josmLoadAndZoom(josmUri, "RABA-KGZ", "Importing split " + splitId + " from RABA-KGZ");
 	//josmLoadAndZoom(0,0,0,0, "RABA-KGZ", "Importing split " + splitId + " from RABA-KGZ");
 	josmImport(josmUri);
@@ -88,7 +98,7 @@ function loadGrid() {
 	// split grid
 	var myIcon = L.divIcon({className: 'my-div-icon'});
 
-	var splitGridShp = new L.Shapefile('grid/newSplitID_improve1.zip',{onEachFeature:function(feature, layer) {
+	var splitGridShp = new L.Shapefile('grid/newSplitID_improve1_84.zip',{onEachFeature:function(feature, layer) {
     	if (feature.properties) {
 			var newSplitID = feature.properties["newSplitID"];
 			//console.log(newSplitID);
@@ -97,7 +107,7 @@ function loadGrid() {
 			//L.marker(feature.getLatLng(), {icon: myIcon, html: "foo"}).addTo(map);
 			//L.marker(layer.getLatLng(), {icon: myIcon}).addTo(map);
 			//layer.bindPopup("Split " + newSplitID);
-			layer.bindPopup(buildDialog(newSplitID));
+			layer.bindPopup(buildDialog(newSplitID, layer));
 			//layer.bindPopup(newSplitID,{maxHeight:200});
 			//if(splitGridShp) {
 			//	map.fitBounds(splitGridShp.getBounds());
@@ -201,21 +211,32 @@ function loadSplit(splitId) {
 
 	featureStyle["RABA_ID:7000"] = {color: "#4444ff", weight:2, fill: true, fillOpacity: 0.2};
 
-	var shpUrl = 'data-20140911/raba' + splitId + 'diss.zip';
+	//var shpUrl = 'data-20140911/raba' + splitId + 'diss.zip';
+	var shpUrl = 'RabaSplits_20150113_EPSG4326/raba' + splitId + 'dissJosm.zip';
+	//var shpUrl = 'data/raba' + splitId + 'diss.zip';
 	console.log("Loading: " + shpUrl);
-	var shpfile = new L.Shapefile(shpUrl, {onEachFeature:function(feature, layer) {
+	var shpfile = new L.Shapefile(shpUrl, {attribution:"fooo", onEachFeature:function(feature, layer) {
     	if (feature.properties) {
 			layer.bindPopup(buildDialog(splitId) +"<br>"+Object.keys(feature.properties).map(function(k){
-				return k + ": " + feature.properties[k] ;
+				return k + "=<b>" + feature.properties[k]+"</b>" ;
 			}).join("<br />"),{maxHeight:200});
     	}
 	}, style:function(feature, layer) { 
 		//return "";
 		if(feature.properties)
 		{
-			var featureKey = Object.keys(feature.properties).map(function(k){
-						return k + ":" + feature.properties[k] ;
-					}).join("|");
+			var keys=Object.keys(feature.properties).length;
+			var featureKey="??"+keys;
+			if(keys>=1) 
+			{
+				var origKey=Object.keys(feature.properties)[0];
+				var mappedKey=origKey;
+				if(origKey=="raba:id") { mappedKey="RABA_ID"; }
+				featureKey = mappedKey + ":" + feature.properties[origKey];
+			}
+			//var featureKey = Object.keys(feature.properties).map(function(k){
+			//			return k + ":" + feature.properties[k] ;
+			//		}).join("|");
 			
 			if ( featureStyle[featureKey]==undefined ) {
 				console.log("Style not found for: " + featureKey);
@@ -229,10 +250,14 @@ function loadSplit(splitId) {
 	 shpfile.once("load", function(){
 	  console.log("finished loaded shpfile");
 	 });
+	//shpfile.addAttribution("shp");
 	return shpfile;
 }
 
-var allSplitsLayer = L.layerGroup();
+//var allSplitsLayer = L.layerGroup();
+var allSplitsLayer = L.featureGroup();
+//    .bindPopup('Hello world!')
+//    .on('click', function() { alert('Clicked on a group!'); });
 var layerControl;
 
 function show() {
@@ -242,7 +267,8 @@ var map = L.map('map', {
     zoom: 9,
 	//maxBounds: [[45.4, 13.3],[46.9, 16.63]],
 	maxBounds: [[45, 13],[47, 17]],
-	minZoom: 8
+	minZoom: 8,
+	maxZoom: 25
 });
 
 var osm = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
@@ -252,6 +278,12 @@ var osm = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
 var esriLayer = L.tileLayer.provider('Esri.WorldImagery');
 var mtbLayer = L.tileLayer.provider('MtbMap');
 var watercolor = L.tileLayer.provider('Stamen.Watercolor');
+var rabaLayer = L.tileLayer.provider('Raba');
+var rabaLayerTransparent = L.tileLayer.provider('Raba');
+rabaLayerTransparent.setOpacity(0.5);
+rabaLayerTransparent.addTo(map);
+var raba3000Layer = L.tileLayer.provider('Raba3000');
+//raba3000Layer.addTo(map);
 var osmfrLayer = L.tileLayer.provider('OpenStreetMap.osmfr');
 var mapQuestOpenOSMLayer = L.tileLayer.provider('MapQuestOpen.OSM');
 //var mapQuestOpenAerialLayer = L.tileLayer.provider('MapQuestOpen.Aerial');
@@ -264,7 +296,9 @@ openSnowMapLayer.addTo(map);
 
 L.control.scale({imperial: false, maxWidth: 200}).addTo(map);
 L.control.mousePosition().addTo(map);
-map.attributionControl.addAttribution("<a href=\"https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ\">RABA overlay<\/a> courtesy of <a href=\"http://www.mkgp.gov.si/\">Ministrstvo za kmetijstvo, gozdarstvo in prehrano<\/a>");
+//map.attributionControl.addAttribution("<a href=\"https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ\">RABA overlay<\/a> courtesy of <a href=\"http://www.mkgp.gov.si/\">Ministrstvo za kmetijstvo, gozdarstvo in prehrano<\/a>");
+map.attributionControl.setPrefix("");
+map.attributionControl.addAttribution("<a href=\"http://www.mkgp.gov.si/\" target=\"_blank\">MKGP<\/a>");
 var gridLayer = loadGrid();
 gridLayer.addTo(map);
 
@@ -274,6 +308,7 @@ $.each(SplitsAvailable, function( index, value ) {
 	//var splitLayer = loadSplit(value);
 	//allSplitsLayer.addLayer(splitLayer)
 });
+//allSplitsLayer.addAttribution("<a href=\"http://www.mkgp.gov.si/\" target=\"_blank\">MKGP<\/a>");
 allSplitsLayer.addTo(map);
 //var splitLayer = loadSplit(43);
 //splitLayer.addTo(map);
@@ -281,6 +316,7 @@ allSplitsLayer.addTo(map);
 var baseLayers = {
 //    "Mapbox": mapbox,
     "OSM Mapnik": osm,
+	"RABA": rabaLayer,
     //"HERE": hereLayer,
 	"ESRI satellite": esriLayer,
 	"Mountainbike": mtbLayer,
@@ -295,6 +331,8 @@ var baseLayers = {
 var overlays = {
        "Split grid": gridLayer,
        "Split detail": allSplitsLayer,
+       "RABA 3000": raba3000Layer,
+       "RABA 50%": rabaLayerTransparent,
 	   "OpenSnowMap": openSnowMapLayer
 };
 
@@ -310,29 +348,190 @@ function unloadAllSplits(){
 	//allSplitsLayer = L.layerGroup();
 	//allSplitsLayer.addTo(map);
 }
+
+
+$(window).resize(function() {
+  sizeLayerControl();
+});
+
+$(document).on("click", ".feature-row", function(e) {
+  $(document).off("mouseout", ".feature-row", clearHighlight);
+  sidebarClick(parseInt($(this).attr("id"), 10));
+});
+
+$(document).on("mouseover", ".feature-row", function(e) {
+  highlight.clearLayers().addLayer(L.circleMarker([$(this).attr("lat"), $(this).attr("lng")], highlightStyle));
+});
+
+$(document).on("mouseout", ".feature-row", clearHighlight);
+
+$("#about-btn").click(function() {
+  $("#aboutModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#full-extent-btn").click(function() {
+  map.fitBounds(boroughs.getBounds());
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#legend-btn").click(function() {
+  $("#legendModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#login-btn").click(function() {
+  $("#loginModal").modal("show");
+  $(".navbar-collapse.in").collapse("hide");
+  return false;
+});
+
+$("#list-btn").click(function() {
+  $('#sidebar').toggle();
+  map.invalidateSize();
+  return false;
+});
+
+$("#nav-btn").click(function() {
+  $(".navbar-collapse").collapse("toggle");
+  return false;
+});
+
+
+
+function sizeLayerControl() {
+  $(".leaflet-control-layers").css("max-height", $("#map").height() - 50);
+}
+
+function clearHighlight() {
+  highlight.clearLayers();
+}
+
 // --> ]]>
 </script>
 </head>
 <body onload="show()">
-<div class="container">
-<div class="leaflet-bar leaflet-container" style="position:fixed;left:30%;right:30%;top:-8px;z-index:1000;background:white;text-align:center;padding-top:8px;font-weight:bold">
-	RABA import overview
-</div>
-<div class="xxleaflet-bar leaflet-container" style="position:fixed;max-width:100px;right:-8px;top:100px;z-index:1000;background:white;xxtext-align:center;padding:8px;padding-right:16px;box-shadow: 0 1px 5px rgba(0,0,0,0.65);border-radius: 4px;">
+ <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="navbar-icon-container">
+            <a href="#" class="navbar-icon pull-right visible-xs" id="nav-btn"><i class="fa fa-bars fa-lg white"></i></a>
+            <!-- <a href="#" class="navbar-icon pull-right visible-xs" id="sidebar-toggle-btn"><i class="fa fa-search fa-lg white"></i></a> -->
+          </div>
+          <a class="navbar-brand" href="#">OSM RABA import</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;Wiki</a></li>
+            <li><a href="http://forum.openstreetmap.org/viewtopic.php?id=27289" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-users white"></i>&nbsp;&nbsp;Forum</a></li>
+            <li><a href="javascript:unloadAllSplits()" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-trash white"></i>&nbsp;&nbsp;Unload all</a></li>
+			<li><a href="javascript:josmGetVersion()" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-pencil-square white"></i>&nbsp;&nbsp;Editor: <span id="josmRemoteInfo">None</span></a><!--  - <a href="http://josm.openstreetmap.de/wiki/Help/Preferences/RemoteControl">help</a> --></li>
+			
+            <li><a href="javascript:josmImagery('Raba 3000', 'tms', 'http://wms.openstreetmap.de/tms/RABA3000/{zoom}/{x}/{y}.png')" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-caret-square-o-down white"></i>&nbsp;&nbsp;JOSM underlay 3000</a></li>
+            <li><a href="javascript:josmImagery('Raba', 'tms', 'http://wms.openstreetmap.de/tms/RABA/{zoom}/{x}/{y}.png')" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-caret-square-o-down white"></i>&nbsp;&nbsp;JOSM underlay</a></li>
+
+			
+            <!--li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="about-btn"><i class="fa fa-question-circle white"></i>&nbsp;&nbsp;About</a></li-->
+            <!--li class="dropdown">
+              <a id="toolsDrop" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe white"></i>&nbsp;&nbsp;Tools <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="full-extent-btn"><i class="fa fa-arrows-alt"></i>&nbsp;&nbsp;Zoom To Full Extent</a></li>
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="legend-btn"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Show Legend</a></li>
+                <li class="divider hidden-xs"></li>
+                <li><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="login-btn"><i class="fa fa-user"></i>&nbsp;&nbsp;Login</a></li>
+              </ul>
+            </li-->
+            <!--li class="dropdown">
+                <a class="dropdown-toggle" id="downloadDrop" href="#" role="button" data-toggle="dropdown"><i class="fa fa-cloud-download white"></i>&nbsp;&nbsp;Download <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="data/boroughs.geojson" download="boroughs.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Boroughs</a></li>
+                  <li><a href="data/subways.geojson" download="subways.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Subway Lines</a></li>
+                  <li><a href="data/DOITT_THEATER_01_13SEPT2010.geojson" download="theaters.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Theaters</a></li>
+                  <li><a href="data/DOITT_MUSEUM_01_13SEPT2010.geojson" download="museums.geojson" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-download"></i>&nbsp;&nbsp;Museums</a></li>
+                </ul>
+            </li-->
+            <!--li class="hidden-xs"><a href="#" data-toggle="collapse" data-target=".navbar-collapse.in" id="list-btn"><i class="fa fa-list white"></i>&nbsp;&nbsp;POI List</a></li-->
+          </ul>
+          <!--form class="navbar-form navbar-right" role="search">
+            <div class="form-group has-feedback">
+                <input id="searchbox" type="text" placeholder="Search" class="form-control">
+                <span id="searchicon" class="fa fa-search form-control-feedback"></span>
+            </div>
+          </form-->
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+<div id="container">
+<!--div class="leaflet-bar leaflet-container" style="position:fixed;left:30%;right:30%;top:-8px;z-index:1000;background:white;text-align:center;padding-top:8px;font-weight:bold">
+	<h1>RABA import overview</h1>
+</div-->
+      <!-- <div id="sidebar">
+        <div class="sidebar-wrapper">
+          <div class="panel panel-default" id="features">
+            <div class="panel-heading">
+              <h3 class="panel-title">Points of Interest
+              <button type="button" class="btn btn-xs btn-default pull-right" id="sidebar-hide-btn"><i class="fa fa-chevron-left"></i></button></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+			  <a href="https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ" target="_blank">About RABA import</a>
+	<br>
+	<a href="http://forum.openstreetmap.org/viewtopic.php?id=27289" target="_blank">Forum</a>
+	<br>
+	JOSM Remote: <!-- <i class="fa fa-circle-o-notch fa-spin"></i> - -> <span id="josmRemoteInfo"><i class="fa fa-exclamation-circle warning"></i> Not found - <a href="http://josm.openstreetmap.de/wiki/Help/Preferences/RemoteControl">help</a></span>
+	<br>
+	<!--<a class="btn" onclick="unloadAllSplits()"><i class="fa fa-trash fa-lg"></i>Unload all splits</a>- ->
+
+	<div class="btn-group" style="width:110px">
+		<a class="btn btn-default" onclick="unloadAllSplits()" title="Unload all splits"><i class="fa fa-trash fa-2x"></i></a>
+	</div>
+                <div class="col-xs-8 col-md-8">
+                  <input type="text" class="form-control search" placeholder="Filter" />
+                </div>
+                <div class="col-xs-4 col-md-4">
+                  <button type="button" class="btn btn-primary pull-right sort" data-sort="feature-name" id="sort-btn"><i class="fa fa-sort"></i>&nbsp;&nbsp;Sort</button>
+                </div>
+              </div>
+            </div>
+            <div class="sidebar-table">
+              <table class="table table-hover" id="feature-list">
+                <thead class="hidden">
+                  <tr>
+                    <th>Icon</th>
+                  <tr>
+                  <tr>
+                    <th>Name</th>
+                  <tr>
+                  <tr>
+                    <th>Chevron</th>
+                  <tr>
+                </thead>
+                <tbody class="list"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+<!-- <div class="xxleaflet-bar leaflet-container" style="position:fixed;max-width:200px;right:-8px;top:100px;z-index:1000;background:white;xxtext-align:center;padding:8px;padding-right:16px;box-shadow: 0 1px 5px rgba(0,0,0,0.65);border-radius: 4px;">
 	<a href="https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ" target="_blank">About RABA import</a>
 	<br>
 	<a href="http://forum.openstreetmap.org/viewtopic.php?id=27289" target="_blank">Forum</a>
 	<br>
-	<!-- JOSM Remote: <span id="josmRemoteInfo"><i class="fa fa-exclamation-circle warning"></i> Not found - <a href="http://josm.openstreetmap.de/wiki/Help/Preferences/RemoteControl">help</a></span> -->
+	JOSM Remote: <!-- <i class="fa fa-circle-o-notch fa-spin"></i> - -> <span id="josmRemoteInfo"><i class="fa fa-exclamation-circle warning"></i> Not found - <a href="http://josm.openstreetmap.de/wiki/Help/Preferences/RemoteControl">help</a></span>
 	<br>
-	<!--<a class="btn" onclick="unloadAllSplits()"><i class="fa fa-trash fa-lg"></i>Unload all splits</a>-->
+	<!--<a class="btn" onclick="unloadAllSplits()"><i class="fa fa-trash fa-lg"></i>Unload all splits</a>- ->
 
 	<div class="btn-group" style="width:110px">
 		<a class="btn btn-default" onclick="unloadAllSplits()" title="Unload all splits"><i class="fa fa-trash fa-2x"></i></a>
 	</div>
 
 
-</div>
+</div> -->
 <div id="map"></div>
 </div>
 </body>
