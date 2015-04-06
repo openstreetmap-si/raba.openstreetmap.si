@@ -218,8 +218,10 @@ function loadSplit(splitId) {
 	var shpfile = new L.Shapefile(shpUrl, {attribution:"fooo", onEachFeature:function(feature, layer) {
     	if (feature.properties) {
 			layer.bindPopup(buildDialog(splitId) +"<br>"+Object.keys(feature.properties).map(function(k){
-				if(feature.properties[k]!="") {
-					return k + "=<b>" + feature.properties[k]+"</b><br />" ;
+				var val=feature.properties[k];
+				if(val!="") {
+					return "<a href=\"http://wiki.openstreetmap.org/wiki/Key:" + encodeURIComponent(k) + "\" target=\"osmwiki\">" + k
+					+ "</a>=<b><a href=\"http://wiki.openstreetmap.org/wiki/Tag:" + encodeURIComponent(k + "=" + val) +  "\" target=\"osmwiki\">" + val +"</a></b><br />";
 				}
 			}).join(""),{maxHeight:200});
     	}
