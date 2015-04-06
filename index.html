@@ -218,8 +218,10 @@ function loadSplit(splitId) {
 	var shpfile = new L.Shapefile(shpUrl, {attribution:"fooo", onEachFeature:function(feature, layer) {
     	if (feature.properties) {
 			layer.bindPopup(buildDialog(splitId) +"<br>"+Object.keys(feature.properties).map(function(k){
-				return k + "=<b>" + feature.properties[k]+"</b>" ;
-			}).join("<br />"),{maxHeight:200});
+				if(feature.properties[k]!="") {
+					return k + "=<b>" + feature.properties[k]+"</b><br />" ;
+				}
+			}).join(""),{maxHeight:200});
     	}
 	}, style:function(feature, layer) { 
 		//return "";
