@@ -219,6 +219,10 @@ function loadSplit(splitId) {
     	if (feature.properties) {
 			layer.bindPopup(buildDialog(splitId) +"<br>"+Object.keys(feature.properties).map(function(k){
 				var val=feature.properties[k];
+				if(val instanceof Date) {
+					var tzoffset=val.getTimezoneOffset() * 60000; //offset in milliseconds
+					val=new Date(val-tzoffset).toISOString().slice(0, 10);
+				}
 				if(val!="") {
 					return "<a href=\"http://wiki.openstreetmap.org/wiki/Key:" + encodeURIComponent(k) + "\" target=\"osmwiki\">" + k
 					+ "</a>=<b><a href=\"http://wiki.openstreetmap.org/wiki/Tag:" + encodeURIComponent(k + "=" + val) +  "\" target=\"osmwiki\">" + val +"</a></b><br />";
