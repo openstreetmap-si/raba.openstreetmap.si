@@ -39,7 +39,24 @@ function josmImport(uri) {
 	// https://dl.dropboxusercontent.com/u/36381923/osm/data/42diss.zip
 	//var importUrl =  baseJosmRemoteUrl + "/import?url=" + encodeURIComponent(uri);
 	var importUrl =  baseJosmRemoteUrl + "/import";
-	$.get( importUrl, { url: uri } );
+	//$.get( importUrl, { url: uri } );
+        $.ajax({
+                url: importUrl,
+                data: { url: uri }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+                if(textStatus == "error" && jqXHR.status==0 && jqXHR.readyState == 0)
+                {
+                        alert("Could not connect to editor.\nIs JOSM running and Remote Control enabled?");
+                }
+                else
+                {
+                        alert(textStatus + ":" + errorThrown + "-" + jqXHR.status + "-" + jqXHR.readyState );
+                        console.log(textStatus + ":" + errorThrown + "-" + jqXHR.status + "-" + jqXHR.readyState );
+                        console.log(textStatus + ": " + errorThrown);
+                        console.log(jqXHR);
+                }
+        });
+
 }
 
 function josmImagery(title, type, uriPattern) {
