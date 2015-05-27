@@ -18,14 +18,56 @@
 			"icon_url": "http://raba.openstreetmap.si/RABA-KGZ-icon.png"
 		},
 		{
+			"key": "source:date",
+			"description": "Date of the source shapefile release in ISO 8601 format"
+		},
+		{
 			"key": "raba:id",
 			"object_types": ["relation","way"],
 			"description": "Preserved the RABA_ID attribute from the source",
 			"icon_url": "http://raba.openstreetmap.si/RABA-KGZ-icon.png"
 		},
 		{
-			"key": "source:date",
-			"description": "Date of the source shapefile release in ISO 8601 format"
+			"key": "raba:id",
+			"value": "1100"
+			"object_types": ["relation","way"],
+			"description": "Farmland / Njiva (1000 m2)",
+		},
+		{
+			"key": "raba:id",
+			"value": "1160"
+			"object_types": ["relation","way"],
+			"description": "Hop field / Hmeljišče (500 m2)",
+		},
+		{
+			"key": "raba:id",
+			"value": "1180"
+			"object_types": ["relation","way"],
+			"description": "Plant nursery / Trajne rastline na njivskih površinah (1000 m2)",
+		},
+		{
+			"key": "raba:id",
+			"value": "1190"
+			"object_types": ["relation","way"],
+			"description": "Plant nursery / Trajne rastline na njivskih površinah (1000 m2)",
+		},
+		{
+			"key": "raba:id",
+			"value": "1211"
+			"object_types": ["relation","way"],
+			"description": "Vineyard / Vinograd (500 m2)",
+		},
+		{
+			"key": "raba:id",
+			"value": "1212"
+			"object_types": ["relation","way"],
+			"description": "Vine plant nursery / Matičnjak (500 m2)",
+		},
+		{
+			"key": "raba:id",
+			"value": "1221"
+			"object_types": ["relation","way"],
+			"description": "Intensive orchard / Intenzivni sadovnjak (1000 m2)",
 		}
 	]
 }
