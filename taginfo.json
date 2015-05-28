@@ -22,6 +22,16 @@
 			"description": "Date of the source shapefile release in ISO 8601 format"
 		},
 		{
+			"key": "source:date",
+			"value": "2015-01-13",
+			"description": "One of the last partial test imports, mostly reverted"
+		},
+		{
+			"key": "source:date",
+			"value": "2015-03-31",
+			"description": "First official import source date"
+		},
+		{
 			"key": "raba:id",
 			"object_types": ["relation","way"],
 			"description": "Preserved the RABA_ID attribute from the source",
@@ -29,45 +39,81 @@
 		},
 		{
 			"key": "raba:id",
-			"value": "1100"
+			"value": "1100",
 			"object_types": ["relation","way"],
-			"description": "Farmland / Njiva (1000 m2)",
+			"description": "Farmland / Njiva (1000 m2)"
 		},
 		{
 			"key": "raba:id",
-			"value": "1160"
+			"value": "1160",
 			"object_types": ["relation","way"],
-			"description": "Hop field / Hmeljišče (500 m2)",
+			"description": "Hop field / Hmeljišče (500 m2)"
 		},
 		{
 			"key": "raba:id",
-			"value": "1180"
+			"value": "1180",
 			"object_types": ["relation","way"],
-			"description": "Plant nursery / Trajne rastline na njivskih površinah (1000 m2)",
+			"description": "Plant nursery / Trajne rastline na njivskih površinah (1000 m2)"
 		},
 		{
 			"key": "raba:id",
-			"value": "1190"
+			"value": "1190",
 			"object_types": ["relation","way"],
-			"description": "Plant nursery / Trajne rastline na njivskih površinah (1000 m2)",
+			"description": "Plant nursery / Trajne rastline na njivskih površinah (1000 m2)"
 		},
 		{
 			"key": "raba:id",
-			"value": "1211"
+			"value": "1211",
 			"object_types": ["relation","way"],
-			"description": "Vineyard / Vinograd (500 m2)",
+			"description": "Vineyard / Vinograd (500 m2)"
 		},
 		{
 			"key": "raba:id",
-			"value": "1212"
+			"value": "1212",
 			"object_types": ["relation","way"],
-			"description": "Vine plant nursery / Matičnjak (500 m2)",
+			"description": "Vine plant nursery / Matičnjak (500 m2)"
 		},
 		{
 			"key": "raba:id",
-			"value": "1221"
+			"value": "1221",
 			"object_types": ["relation","way"],
-			"description": "Intensive orchard / Intenzivni sadovnjak (1000 m2)",
+			"description": "Intensive orchard / Intenzivni sadovnjak (1000 m2)"
+		},
+		{
+			"key": "raba:id",
+			"value": "1222",
+			"object_types": ["relation","way"],
+			"description": "Extensive orchard / Ekstenzivni oziroma travniški sadovnjak (1000 m2)"
+		},
+		{
+			"key": "raba:id",
+			"value": "1230",
+			"object_types": ["relation","way"],
+			"description": "Olive tree orchard / Oljčnik (500 m2)"
+		},
+		{
+			"key": "raba:id",
+			"value": "1300",
+			"object_types": ["relation","way"],
+			"description": "Meadow / Trajni travnik (1000 m2)"
+		},
+		{
+			"key": "raba:id",
+			"value": "1321",
+			"object_types": ["relation","way"],
+			"description": "Wetland meadow / Barjanski travnik (1000 m2)"
+		},
+		{
+			"key": "raba:id",
+			"value": "1800",
+			"object_types": ["relation","way"],
+			"description": "Forest / Kmetijsko zemljišče, poraslo z gozdnim drevjem (1000 m2)"
+		},
+		{
+			"key": "raba:id",
+			"value": "1410",
+			"object_types": ["relation","way"],
+			"description": "Abandoned, overgrowing farmland / Kmetijsko zemljišče v zaraščanju (1000 m2)"
 		}
 	]
 }
