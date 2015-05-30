@@ -13,106 +13,110 @@
 		{
 			"key": "source",
 			"value": "RABA-KGZ",
+			"object_types": ["relation","way","area"],
 			"description": "Source of landuse data import attribution to Ministry of Agriculture, Forestry and Food",
 			"doc_url": "https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ#License",
 			"icon_url": "http://raba.openstreetmap.si/RABA-KGZ-icon.png"
 		},
 		{
 			"key": "source:date",
+			"object_types": ["relation","way","area"],
 			"description": "Date of the source shapefile release in ISO 8601 format"
 		},
 		{
 			"key": "source:date",
 			"value": "2015-01-13",
+			"object_types": ["relation","way","area"],
 			"description": "One of the last partial test imports, mostly reverted"
 		},
 		{
 			"key": "source:date",
 			"value": "2015-03-31",
+			"object_types": ["relation","way","area"],
 			"description": "First official import source date"
 		},
 		{
 			"key": "raba:id",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Preserved the RABA_ID attribute from the source",
 			"icon_url": "http://raba.openstreetmap.si/RABA-KGZ-icon.png"
 		},
 		{
 			"key": "raba:id",
 			"value": "1100",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Farmland / Njiva (1000 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1160",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Hop field / Hmeljišče (500 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1180",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Plant nursery / Trajne rastline na njivskih površinah (1000 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1190",
-			"object_types": ["relation","way"],
-			"description": "Plant nursery / Trajne rastline na njivskih površinah (1000 m2)"
+			"object_types": ["relation","way","area"],
+			"description": "Grenhouse horticulture / Rastlinjak (25 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1211",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Vineyard / Vinograd (500 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1212",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Vine plant nursery / Matičnjak (500 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1221",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Intensive orchard / Intenzivni sadovnjak (1000 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1222",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Extensive orchard / Ekstenzivni oziroma travniški sadovnjak (1000 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1230",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Olive tree orchard / Oljčnik (500 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1300",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Meadow / Trajni travnik (1000 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1321",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Wetland meadow / Barjanski travnik (1000 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1800",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Forest / Kmetijsko zemljišče, poraslo z gozdnim drevjem (1000 m2)"
 		},
 		{
 			"key": "raba:id",
 			"value": "1410",
-			"object_types": ["relation","way"],
+			"object_types": ["relation","way","area"],
 			"description": "Abandoned, overgrowing farmland / Kmetijsko zemljišče v zaraščanju (1000 m2)"
 		}
 	]
