@@ -301,6 +301,9 @@ rabaLayerTransparent.setOpacity(0.5);
 rabaLayerTransparent.addTo(map);
 var raba3000Layer = L.tileLayer.provider('Raba3000');
 //raba3000Layer.addTo(map);
+var CopernicusFeatheringLayer = L.tileLayer.provider('Copernicus.feathering');
+var CopernicusFeatheringOverlay = L.tileLayer.provider('Copernicus.feathering');
+CopernicusFeatheringOverlay.setOpacity(0.5);
 var osmfrLayer = L.tileLayer.provider('OpenStreetMap.osmfr');
 var mapQuestOpenOSMLayer = L.tileLayer.provider('MapQuestOpen.OSM');
 //var mapQuestOpenAerialLayer = L.tileLayer.provider('MapQuestOpen.Aerial');
@@ -336,6 +339,7 @@ var baseLayers = {
 	"RABA": rabaLayer,
     //"HERE": hereLayer,
 	"ESRI satellite": esriLayer,
+	"Copernicus": CopernicusFeatheringLayer,
 	"Mountainbike": mtbLayer,
 	"OpenStreetMap.fr": osmfrLayer,
 	"MapQuestOpen": mapQuestOpenOSMLayer,
@@ -350,7 +354,8 @@ var overlays = {
        "Split detail": allSplitsLayer,
        "RABA 3000": raba3000Layer,
        "RABA 50%": rabaLayerTransparent,
-	   "OpenSnowMap": openSnowMapLayer
+	"OpenSnowMap": openSnowMapLayer,
+	"Copernicus 50%": CopernicusFeatheringOverlay
 };
 
 layerControl = L.control.layers(baseLayers, overlays).addTo(map);

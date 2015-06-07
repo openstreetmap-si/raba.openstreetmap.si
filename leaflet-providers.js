@@ -488,6 +488,24 @@
 				attribution: '<a href="http://www.mkgp.gov.si/" target="_blank">MKGP</a>',
 				maxZoom: 22
 			}
+		},
+		Copernicus: {
+			// url: 'http://a{s}.acetate.geoiq.com/tiles/{variant}/{z}/{x}/{y}.png',
+			//url: 'http://cidportal.jrc.ec.europa.eu/copernicus/services/tile/gmaps/core003_feathering_mixed@g/{z}/{x}/{y}.png',
+			//    http://cidportal.jrc.ec.europa.eu/copernicus/services/tile/gmaps/core003_seamline_mixed@g/16/35262/23441.png
+			url: 'http://cidportal.jrc.ec.europa.eu/copernicus/services/tile/gmaps/{variant}/{z}/{x}/{y}.png',
+			options: {
+				attribution:
+					'<a href="https://copernicusdata.esa.int/web/cscda/home" target="_blank">Copernicus ESA</a>',
+				//subdomains: '0123',
+				minZoom: 2,
+				maxZoom: 18,
+				variant: 'core003_feathering_mixed@g'
+			},
+			variants: {
+				feathering: 'core003_feathering_mixed@g',
+				seamline: 'core003_seamline_mixed@g'
+			}
 		}
 	};
 
