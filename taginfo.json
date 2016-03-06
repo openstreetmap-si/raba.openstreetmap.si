@@ -36,6 +36,24 @@
 			"description": "First official import source date"
 		},
 		{
+			"key": "source:date",
+			"value": "2015-10-31",
+			"object_types": ["relation","way","area"],
+			"description": "Updated import source, first converted using GeoCoordinateConverter"
+		},
+		{
+			"key": "source:date",
+			"value": "2015-12-31",
+			"object_types": ["relation","way","area"],
+			"description": "Updated import source"
+		},
+		{
+			"key": "source:date",
+			"value": "2016-03-03",
+			"object_types": ["relation","way","area"],
+			"description": "Updated import source, fixed clipped split extremes"
+		},
+		{
 			"key": "raba:id",
 			"object_types": ["relation","way","area"],
 			"description": "Preserved the RABA_ID attribute from the source",
