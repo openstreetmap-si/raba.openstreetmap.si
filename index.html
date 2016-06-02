@@ -88,7 +88,7 @@ function showSplit(id) {
 
 function josmImportWithMeta(splitId) {
 	//var josmUri=location.origin + '/data-20140911/raba'+splitId+'diss.osm.zip';
-	var josmUri=location.origin + '/RabaSplits_20160430_EPSG4326/raba'+splitId+'dissJosm.zip';
+	var josmUri=location.origin + '/RabaSplits_20160531_EPSG4326/raba'+splitId+'dissJosm.zip';
 	//josmLoadAndZoom(josmUri, "RABA-KGZ", "Importing split " + splitId + " from RABA-KGZ");
 	//josmLoadAndZoom(0,0,0,0, "RABA-KGZ", "Importing split " + splitId + " from RABA-KGZ");
 	josmImport(josmUri);
@@ -221,7 +221,7 @@ function loadSplit(splitId) {
 	featureStyle["RABA_ID:7000"] = {color: "#4444ff", weight:2, fill: true, fillOpacity: 0.2};
 
 	//var shpUrl = 'data-20140911/raba' + splitId + 'diss.zip';
-	var shpUrl = 'RabaSplits_20160430_EPSG4326/raba' + splitId + 'dissJosm.zip';
+	var shpUrl = 'RabaSplits_20160531_EPSG4326/raba' + splitId + 'dissJosm.zip';
 	//var shpUrl = 'data/raba' + splitId + 'diss.zip';
 	console.log("Loading: " + shpUrl);
 	var shpfile = new L.Shapefile(shpUrl, {attribution:"fooo", onEachFeature:function(feature, layer) {
