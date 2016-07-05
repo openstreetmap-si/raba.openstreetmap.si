@@ -72,6 +72,12 @@
 			"description": "Updated import source"
 		},
 		{
+			"key": "source:date",
+			"value": "2016-06-30",
+			"object_types": ["relation","way","area"],
+			"description": "Updated import source"
+		},
+		{
 			"key": "raba:id",
 			"object_types": ["relation","way","area"],
 			"description": "Preserved the RABA_ID attribute from the source",
