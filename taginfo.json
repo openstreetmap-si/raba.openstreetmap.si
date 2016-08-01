@@ -71,11 +71,13 @@
 			"object_types": ["relation","way","area"],
 			"description": "Updated import source"
 		},
+		{
 			"key": "source:date",
 			"value": "2016-06-30",
 			"object_types": ["relation","way","area"],
 			"description": "Updated import source"
 		},
+		{
 			"key": "source:date",
 			"value": "2016-07-31",
 			"object_types": ["relation","way","area"],
