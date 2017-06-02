@@ -489,6 +489,23 @@
 				maxZoom: 22
 			}
 		},
+		DigitalGlobe: {
+			// http://josm.openstreetmap.de/wiki/Maps#DigitalGlobePremiumImagery
+			//http://b.tiles.mapbox.com/v4/digitalglobe.316c9a2e/18/141063/93727.png?access_token=pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqMmFxdGp5aTAwOWIzM3M1NDZ2eGU1a2QifQ.JN5adNxCwK_oprEwFEtjjg
+			url: 'http://{s}.tiles.mapbox.com/v4/digitalglobe.{variant}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqMmFxdGp5aTAwOWIzM3M1NDZ2eGU1a2QifQ.JN5adNxCwK_oprEwFEtjjg',
+			options: {
+				attribution:
+					'<a href="https://wiki.openstreetmap.org/wiki/DigitalGlobe" target="_blank">DigitalGlobe Terms & Feedback</a>',
+				subdomains: 'abc',
+				minZoom: 0,
+				maxZoom: 19,
+				variant: '316c9a2e'
+			},
+			variants: {
+				premium: '316c9a2e',
+				standard: '0a8e44ba'
+			}
+		},
 		Copernicus: {
 			// url: 'http://a{s}.acetate.geoiq.com/tiles/{variant}/{z}/{x}/{y}.png',
 			//url: 'http://cidportal.jrc.ec.europa.eu/copernicus/services/tile/gmaps/core003_feathering_mixed@g/{z}/{x}/{y}.png',

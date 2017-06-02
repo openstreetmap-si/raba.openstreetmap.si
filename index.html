@@ -307,6 +307,8 @@ rabaLayerTransparent.setOpacity(0.5);
 //rabaLayerTransparent.addTo(map);
 var raba3000Layer = L.tileLayer.provider('Raba3000');
 //raba3000Layer.addTo(map);
+var DigitalGlobePremiumLayer = L.tileLayer.provider('DigitalGlobe.premium');
+var DigitalGlobeStandardLayer = L.tileLayer.provider('DigitalGlobe.standard');
 var CopernicusFeatheringLayer = L.tileLayer.provider('Copernicus.feathering');
 var CopernicusFeatheringOverlay = L.tileLayer.provider('Copernicus.feathering');
 CopernicusFeatheringOverlay.setOpacity(0.5);
@@ -345,6 +347,8 @@ var baseLayers = {
 	"RABA": rabaLayer,
     //"HERE": hereLayer,
 	"ESRI satellite": esriLayer,
+	"DigitalGlobe Premium": DigitalGlobePremiumLayer,
+	"DigitalGlobe Standard": DigitalGlobeStandardLayer,
 	"Copernicus": CopernicusFeatheringLayer,
 	"Mountainbike": mtbLayer,
 	"OpenStreetMap.fr": osmfrLayer,
