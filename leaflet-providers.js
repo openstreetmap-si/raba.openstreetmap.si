@@ -489,6 +489,20 @@
 				maxZoom: 22
 			}
 		},
+		GursBuildings: {
+			url: 'http://wms.openstreetmap.de/tms/GURS-building-outlines/{z}/{x}/{y}.png',
+			options: {
+				attribution: '<a href="http://www.gu.gov.si/" target="_blank">GURS</a>',
+				maxZoom: 22
+			}
+		},
+		GursRoads: {
+			url: 'http://wms.openstreetmap.de/tms/GURS-road-lines/{z}/{x}/{y}.png',
+			options: {
+				attribution: '<a href="http://www.gu.gov.si/" target="_blank">GURS</a>',
+				maxZoom: 22
+			}
+		},
 		DigitalGlobe: {
 			// http://josm.openstreetmap.de/wiki/Maps#DigitalGlobePremiumImagery
 			//http://b.tiles.mapbox.com/v4/digitalglobe.316c9a2e/18/141063/93727.png?access_token=pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqMmFxdGp5aTAwOWIzM3M1NDZ2eGU1a2QifQ.JN5adNxCwK_oprEwFEtjjg
