@@ -36,6 +36,11 @@
 <script type="text/javascript" src="L.Control.MousePosition.js"></script>
 <script type="text/javascript" src="leaflet-hash.js"></script>
 <script type="text/javascript" src="josmRemote.js"></script>
+
+<!-- https://admin.tilehosting.com/geocoding/ -->
+<script src="https://cdn.klokantech.com/osmnames/v1/autocomplete.js"></script>
+<link href="https://cdn.klokantech.com/osmnames/v1/autocomplete.css" rel="stylesheet" />
+
 <style>
 html,body{height:100%}
 
@@ -53,6 +58,8 @@ html,body{height:100%}
     height:100%;
     min-height:100px;
 }
+
+.ac-renderer { z-index: 1050;}
 </style>
 <script type="text/javascript">
 //<!-- <![CDATA[
@@ -382,6 +389,20 @@ $("#nav-btn").click(function() {
   return false;
 });
 
+	var autocomplete = new kt.OsmNamesAutocomplete(
+			'srch-term', 'https://geocoder.tilehosting.com/si/', 'dgz5zNlwEk8Oup3sYX1O');
+	autocomplete.registerCallback(function(item) {
+		// alert(JSON.stringify(item, ' ', 2));
+		// console.log(item);
+		// console.log(item.boundingbox, map);
+		map.fitBounds([
+			[item.boundingbox[1], item.boundingbox[0]], 
+			[item.boundingbox[3], item.boundingbox[2]]
+		], {
+					maxZoom: 14
+				});
+	});
+
 }
 
 function unloadAllSplits(){
@@ -513,7 +534,18 @@ function clearHighlight() {
                 <input id="searchbox" type="text" placeholder="Search" class="form-control">
                 <span id="searchicon" class="fa fa-search form-control-feedback"></span>
             </div>
-          </form-->
+					</form-->
+					
+					<div class="col-sm-3 col-md-3 pull-right">
+						<form class="navbar-form" role="search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" autocomplete="off">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+							</div>
+						</div>
+						</form>
+					</div>
         </div><!--/.navbar-collapse -->
       </div>
     </div>
