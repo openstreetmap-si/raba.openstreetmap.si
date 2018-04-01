@@ -70,7 +70,7 @@
 	L.TileLayer.Provider.providers = {
 		OpenStreetMap: {
 			//url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-			url: '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+			url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 			options: {
 				attribution:
 					'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
