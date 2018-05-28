@@ -102,7 +102,7 @@
 					}
 				},
 				openSnowMap: {
-					url: 'http://www.opensnowmap.org/opensnowmap-overlay/{z}/{x}/{y}.png',
+					url: 'https://www.opensnowmap.org/opensnowmap-overlay/{z}/{x}/{y}.png',
 					options: {
 						maxZoom: 28,
 						attribution: '<a href="http://opensnowmap.org/" target="_blank">OpenSnowMap</a>'
