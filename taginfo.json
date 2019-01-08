@@ -252,6 +252,12 @@
 			"description": "Updated import source"
 		},
 		{
+			"key": "source:date",
+			"value": "2019-01-03",
+			"object_types": ["relation","way","area"],
+			"description": "Updated import source, first in d96 (EPSG:3794) from the ministry"
+		},
+		{
 			"key": "raba:id",
 			"object_types": ["relation","way","area"],
 			"description": "Preserved the RABA_ID attribute from the source",
