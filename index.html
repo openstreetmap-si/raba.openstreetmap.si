@@ -356,12 +356,12 @@ var baseLayers = {
 	"RABA": rabaLayer,
     //"HERE": hereLayer,
 	"ESRI satellite": esriLayer,
-	"DigitalGlobe Premium": DigitalGlobePremiumLayer,
-	"DigitalGlobe Standard": DigitalGlobeStandardLayer,
+//	"DigitalGlobe Premium": DigitalGlobePremiumLayer,
+//	"DigitalGlobe Standard": DigitalGlobeStandardLayer,
 	"Copernicus": CopernicusFeatheringLayer,
 	"Mountainbike": mtbLayer,
 	"OpenStreetMap.fr": osmfrLayer,
-	"MapQuestOpen": mapQuestOpenOSMLayer,
+//	"MapQuestOpen": mapQuestOpenOSMLayer,
 	//"MapQuestOpen Aerial": mapQuestOpenAerialLayer,
 	"Watercolor": watercolor,
 	"Blank :)": blankMapLayer
@@ -375,7 +375,7 @@ var overlays = {
        "RABA 50%": rabaLayerTransparent,
        "GURS buildings": gursBuildingsLayer,
        "GURS roads": gursRoadsLayer,
-	"OpenSnowMap": openSnowMapLayer,
+//	"OpenSnowMap": openSnowMapLayer,
 	"Copernicus 50%": CopernicusFeatheringOverlay
 };
 
@@ -501,9 +501,9 @@ function clearHighlight() {
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">JOSM<span class="caret"></span></a>
           	<ul class="dropdown-menu">
 			<li><a href="javascript:josmGetVersion()" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-pencil-square"></i>&nbsp;Remote: <span id="josmRemoteInfo">None</span></a><!--  - <a href="http://josm.openstreetmap.de/wiki/Help/Preferences/RemoteControl">help</a> --></li>
-            		<li><a href="javascript:josmImagery('Raba 3000', 'tms', 'http://wms.openstreetmap.de/tms/RABA3000/{zoom}/{x}/{y}.png')" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-caret-square-o-down"></i>&nbsp;Add underlay 3000</a></li>
-            		<li><a href="javascript:josmImagery('Raba', 'tms', 'http://wms.openstreetmap.de/tms/RABA/{zoom}/{x}/{y}.png')" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-caret-square-o-down"></i>&nbsp;Add underlay</a></li>
-            		<li><a href="javascript:josmImagery('Raba grid', 'tms', 'http://wms.openstreetmap.de/tms/RABAsplits/{zoom}/{x}/{y}.png')" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-caret-square-o-down"></i>&nbsp;Add grid underlay</a></li>
+            		<li><a href="javascript:josmImagery('Raba 3000', 'tms', 'https://wms.openstreetmap.de/tms/RABA3000/{zoom}/{x}/{y}.png')" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-caret-square-o-down"></i>&nbsp;Add underlay 3000</a></li>
+            		<li><a href="javascript:josmImagery('Raba', 'tms', 'https://wms.openstreetmap.de/tms/RABA/{zoom}/{x}/{y}.png')" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-caret-square-o-down"></i>&nbsp;Add underlay</a></li>
+            		<li><a href="javascript:josmImagery('Raba grid', 'tms', 'https://wms.openstreetmap.de/tms/RABAsplits/{zoom}/{x}/{y}.png')" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-caret-square-o-down"></i>&nbsp;Add grid underlay</a></li>
           	</ul>
             </li>
 

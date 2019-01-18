@@ -89,16 +89,16 @@
 					url: 'http://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png'
 				},
 				HOT: {
-					url: 'http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+					url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
 					options: {
 						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
 					}
 				},
 				osmfr: {
-					url: 'http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
+					url: 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png',
 					options: {
 						maxZoom: 20,
-						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="http://openstreetmap.fr/" target="_blank">openstreetmap.fr</a>'
+						attribution: '{attribution.OpenStreetMap}, Tiles courtesy of <a href="https://www.openstreetmap.fr/" target="_blank">openstreetmap.fr</a>'
 					}
 				},
 				openSnowMap: {
@@ -261,7 +261,7 @@
 			}
 		},
 		Esri: {
-			url: 'http://server.arcgisonline.com/ArcGIS/rest/services/{variant}/MapServer/tile/{z}/{y}/{x}',
+			url: 'https://server.arcgisonline.com/ArcGIS/rest/services/{variant}/MapServer/tile/{z}/{y}/{x}',
 			options: {
 				variant: 'World_Street_Map',
 				attribution: 'Tiles &copy; Esri'
@@ -476,28 +476,28 @@
 			}
 		},
 		Raba3000: {
-			url: 'http://wms.openstreetmap.de/tms/RABA3000/{z}/{x}/{y}.png',
+			url: 'https://wms.openstreetmap.de/tms/RABA3000/{z}/{x}/{y}.png',
 			options: {
 				attribution: '<a href="http://www.mkgp.gov.si/" target="_blank">MKGP</a>',
 				maxZoom: 22
 			}
 		},
 		Raba: {
-			url: 'http://wms.openstreetmap.de/tms/RABA/{z}/{x}/{y}.png',
+			url: 'https://wms.openstreetmap.de/tms/RABA/{z}/{x}/{y}.png',
 			options: {
 				attribution: '<a href="http://www.mkgp.gov.si/" target="_blank">MKGP</a>',
 				maxZoom: 22
 			}
 		},
 		GursBuildings: {
-			url: 'http://wms.openstreetmap.de/tms/GURS-building-outlines/{z}/{x}/{y}.png',
+			url: 'https://wms.openstreetmap.de/tms/GURS-building-outlines/{z}/{x}/{y}.png',
 			options: {
 				attribution: '<a href="http://www.gu.gov.si/" target="_blank">GURS</a>',
 				maxZoom: 22
 			}
 		},
 		GursRoads: {
-			url: 'http://wms.openstreetmap.de/tms/GURS-road-lines/{z}/{x}/{y}.png',
+			url: 'https://wms.openstreetmap.de/tms/GURS-road-lines/{z}/{x}/{y}.png',
 			options: {
 				attribution: '<a href="http://www.gu.gov.si/" target="_blank">GURS</a>',
 				maxZoom: 22
@@ -524,7 +524,7 @@
 			// url: 'http://a{s}.acetate.geoiq.com/tiles/{variant}/{z}/{x}/{y}.png',
 			//url: 'http://cidportal.jrc.ec.europa.eu/copernicus/services/tile/gmaps/core003_feathering_mixed@g/{z}/{x}/{y}.png',
 			//    http://cidportal.jrc.ec.europa.eu/copernicus/services/tile/gmaps/core003_seamline_mixed@g/16/35262/23441.png
-			url: 'http://cidportal.jrc.ec.europa.eu/copernicus/services/tile/gmaps/{variant}/{z}/{x}/{y}.png',
+			url: 'https://cidportal.jrc.ec.europa.eu/copernicus/services/tile/gmaps/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution:
 					'<a href="https://copernicusdata.esa.int/web/cscda/home" target="_blank">Copernicus ESA</a>',
