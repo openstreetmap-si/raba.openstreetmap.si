@@ -270,6 +270,18 @@
 			"description": "Updated import source, based on d96 (EPSG:3794) from the ministry"
 		},
 		{
+			"key": "source:date",
+			"value": "2019-03-31",
+			"object_types": ["relation","way","area"],
+			"description": "Updated import source, based on d96 (EPSG:3794) from the ministry"
+		},
+		{
+			"key": "source:date",
+			"value": "2019-04-30",
+			"object_types": ["relation","way","area"],
+			"description": "Updated import source, based on d96 (EPSG:3794) from the ministry"
+		},
+		{
 			"key": "raba:id",
 			"object_types": ["relation","way","area"],
 			"description": "Preserved the RABA_ID attribute from the source",
