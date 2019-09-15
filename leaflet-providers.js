@@ -537,7 +537,19 @@
 				feathering: 'core003_feathering_mixed@g',
 				seamline: 'core003_seamline_mixed@g'
 			}
-		}
+		},
+		WmfLabs: {
+			url: 'https://tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png',
+			options: {
+				attribution: 'Hillshading: SRTM3 v2 (<a href="http://www2.jpl.nasa.gov/srtm/" target="_blank">NASA</a>)',
+				maxZoom: 15,
+				variant: 'hillshading'
+			},
+			variants: {
+				hillshading: 'hillshading'
+			}
+		},
+		
 	};
 
 	L.tileLayer.provider = function (provider, options) {

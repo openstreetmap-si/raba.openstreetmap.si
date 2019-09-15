@@ -321,6 +321,7 @@ var DigitalGlobeStandardLayer = L.tileLayer.provider('DigitalGlobe.standard');
 var CopernicusFeatheringLayer = L.tileLayer.provider('Copernicus.feathering');
 var CopernicusFeatheringOverlay = L.tileLayer.provider('Copernicus.feathering');
 CopernicusFeatheringOverlay.setOpacity(0.5);
+var WmfLabsHillshadingOverlay = L.tileLayer.provider('WmfLabs.hillshading');
 var osmfrLayer = L.tileLayer.provider('OpenStreetMap.osmfr');
 var mapQuestOpenOSMLayer = L.tileLayer.provider('MapQuestOpen.OSM');
 //var mapQuestOpenAerialLayer = L.tileLayer.provider('MapQuestOpen.Aerial');
@@ -329,7 +330,7 @@ var blankMapLayer = L.tileLayer.provider('BlankMap');
 
 var openSnowMapLayer = L.tileLayer.provider('OpenStreetMap.openSnowMap');
 //openSnowMapLayer.addTo(map);
-
+WmfLabsHillshadingOverlay.addTo(map);
 
 L.control.scale({imperial: false, maxWidth: 200}).addTo(map);
 L.control.mousePosition().addTo(map);
@@ -376,7 +377,8 @@ var overlays = {
        "GURS buildings": gursBuildingsLayer,
        "GURS roads": gursRoadsLayer,
 //	"OpenSnowMap": openSnowMapLayer,
-	"Copernicus 50%": CopernicusFeatheringOverlay
+	"Copernicus 50%": CopernicusFeatheringOverlay,
+	"Hillshading": WmfLabsHillshadingOverlay
 };
 
 layerControl = L.control.layers(baseLayers, overlays).addTo(map);
