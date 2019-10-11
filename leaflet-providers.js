@@ -539,7 +539,7 @@
 			}
 		},
 		WmfLabs: {
-			url: 'https://tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png',
+			url: 'https://tiles.wmflabs.org/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution: 'Hillshading: SRTM3 v2 (<a href="http://www2.jpl.nasa.gov/srtm/" target="_blank">NASA</a>)',
 				maxZoom: 15,
