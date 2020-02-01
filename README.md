@@ -1,5 +1,5 @@
 # raba.openstreetmap.si
-This webbsite (hosted at http://raba.openstreetmap.si) provides web interface for [Slovenia Landcover (RABA-KGZ) ](https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ) community import process.
+This webbsite (hosted at https://raba.openstreetmap.si) provides web interface for [Slovenia Landcover (RABA-KGZ) ](https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ) community import process.
 
 Used libraries:
 ---
