@@ -308,6 +308,7 @@ var osm = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
 var esriLayer = L.tileLayer.provider('Esri.WorldImagery');
 var mtbLayer = L.tileLayer.provider('MtbMap');
 var watercolor = L.tileLayer.provider('Stamen.Watercolor');
+var gursDof025 = L.tileLayer.provider('GursDof025');
 var rabaLayer = L.tileLayer.provider('Raba');
 var rabaLayerTransparent = L.tileLayer.provider('Raba');
 rabaLayerTransparent.setOpacity(0.5);
@@ -364,6 +365,7 @@ var baseLayers = {
 	"OpenStreetMap.fr": osmfrLayer,
 //	"MapQuestOpen": mapQuestOpenOSMLayer,
 	//"MapQuestOpen Aerial": mapQuestOpenAerialLayer,
+	"GURS DOF025": gursDof025,
 	"Watercolor": watercolor,
 	"Blank :)": blankMapLayer
 

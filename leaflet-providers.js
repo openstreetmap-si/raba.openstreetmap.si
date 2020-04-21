@@ -503,6 +503,14 @@
 				maxZoom: 22
 			}
 		},
+		GursDof025: {
+			url: 'https://gis.level2.si/geoserver/gwc/service/tms/1.0.0/level2%3ADOF025_latest@EPSG%3A3857@jpeg/{z}/{x}/{-y}.jpeg',
+			options: {
+				attribution: 'DOF025 CC-BY <a href="https://www.gov.si/drzavni-organi/organi-v-sestavi/geodetska-uprava/" target="_blank">GURS</a> (hosted by <a href="https://www.openstreetmap.org/user/urosp">urosp</a>)',
+				minZoom: 8,
+				maxZoom: 20
+			}
+		},
 		DigitalGlobe: {
 			// http://josm.openstreetmap.de/wiki/Maps#DigitalGlobePremiumImagery
 			//http://b.tiles.mapbox.com/v4/digitalglobe.316c9a2e/18/141063/93727.png?access_token=pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqMmFxdGp5aTAwOWIzM3M1NDZ2eGU1a2QifQ.JN5adNxCwK_oprEwFEtjjg
