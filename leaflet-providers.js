@@ -478,28 +478,28 @@
 		Raba3000: {
 			url: 'https://wms.openstreetmap.de/tms/RABA3000/{z}/{x}/{y}.png',
 			options: {
-				attribution: '<a href="http://www.mkgp.gov.si/" target="_blank">MKGP</a>',
+				attribution: '<a href="https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-kmetijstvo-gozdarstvo-in-prehrano/" target="_blank">MKGP</a>',
 				maxZoom: 22
 			}
 		},
 		Raba: {
 			url: 'https://wms.openstreetmap.de/tms/RABA/{z}/{x}/{y}.png',
 			options: {
-				attribution: '<a href="http://www.mkgp.gov.si/" target="_blank">MKGP</a>',
+				attribution: '<a href="https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-kmetijstvo-gozdarstvo-in-prehrano/" target="_blank">MKGP</a>',
 				maxZoom: 22
 			}
 		},
 		GursBuildings: {
 			url: 'https://wms.openstreetmap.de/tms/GURS-building-outlines/{z}/{x}/{y}.png',
 			options: {
-				attribution: '<a href="http://www.gu.gov.si/" target="_blank">GURS</a>',
+				attribution: '<a href="https://www.gov.si/drzavni-organi/organi-v-sestavi/geodetska-uprava/" target="_blank">GURS</a>',
 				maxZoom: 22
 			}
 		},
 		GursRoads: {
 			url: 'https://wms.openstreetmap.de/tms/GURS-road-lines/{z}/{x}/{y}.png',
 			options: {
-				attribution: '<a href="http://www.gu.gov.si/" target="_blank">GURS</a>',
+				attribution: '<a href="https://www.gov.si/drzavni-organi/organi-v-sestavi/geodetska-uprava/" target="_blank">GURS</a>',
 				maxZoom: 22
 			}
 		},
