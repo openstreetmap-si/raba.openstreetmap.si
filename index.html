@@ -237,7 +237,7 @@ function loadSplit(splitId) {
 	var shpUrl = dataBaseUrl + 'raba' + splitId + 'dissJosm.zip';
 	//var shpUrl = 'data/raba' + splitId + 'diss.zip';
 	console.log("Loading: " + shpUrl);
-	var shpfile = new L.Shapefile(shpUrl, {attribution:"fooo", onEachFeature:function(feature, layer) {
+	var shpfile = new L.Shapefile(shpUrl, {attribution:'<a href="https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-kmetijstvo-gozdarstvo-in-prehrano/" target="_blank">MKGP</a>', onEachFeature:function(feature, layer) {
     	if (feature.properties) {
 			layer.bindPopup(buildDialog(splitId) +"<br>"+Object.keys(feature.properties).map(function(k){
 				var val=feature.properties[k];
