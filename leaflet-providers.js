@@ -506,7 +506,7 @@
 		GursDof025: {
 			url: 'https://gis.level2.si/geoserver/gwc/service/tms/1.0.0/level2%3ADOF025_latest@EPSG%3A3857@jpeg/{z}/{x}/{-y}.jpeg',
 			options: {
-				attribution: 'DOF025 CC-BY <a href="https://www.gov.si/drzavni-organi/organi-v-sestavi/geodetska-uprava/" target="_blank">GURS</a> (hosted by <a href="http://level2.si/sl/pogoji-uporabe-spletnih-servisov/">Level2</a>)',
+				attribution: 'DOF025 CC-BY <a href="https://www.gov.si/drzavni-organi/organi-v-sestavi/geodetska-uprava/" target="_blank">GURS</a> (hosted by <a href="https://level2.si/sl/pogoji-uporabe-spletnih-servisov/">Level2</a>)',
 				minZoom: 8,
 				maxZoom: 20
 			}
