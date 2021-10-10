@@ -1,6 +1,6 @@
 {
 	"data_format": 1,
-	"data_url": "http://raba.openstreetmap.si/taginfo.json",
+	"data_url": "https://raba.openstreetmap.si/taginfo.json",
 	"project": {
 		"name": "RABA-KGZ import",
 		"description": "Slovenia Landcover Import - RABA-KGZ",

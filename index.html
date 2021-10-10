@@ -246,8 +246,8 @@ function loadSplit(splitId) {
 					val=new Date(val-tzoffset).toISOString().slice(0, 10);
 				}
 				if(val!="") {
-					return "<a href=\"http://wiki.openstreetmap.org/wiki/Key:" + encodeURIComponent(k) + "\" target=\"osmwiki\">" + k
-					+ "</a>=<b><a href=\"http://wiki.openstreetmap.org/wiki/Tag:" + encodeURIComponent(k + "=" + val) +  "\" target=\"osmwiki\">" + val +"</a></b><br />";
+					return "<a href=\"https://wiki.openstreetmap.org/wiki/Key:" + encodeURIComponent(k) + "\" target=\"osmwiki\">" + k
+					+ "</a>=<b><a href=\"https://wiki.openstreetmap.org/wiki/Tag:" + encodeURIComponent(k + "=" + val) +  "\" target=\"osmwiki\">" + val +"</a></b><br />";
 				}
 			}).join(""),{maxHeight:200});
     	}
@@ -498,10 +498,10 @@ function clearHighlight() {
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-info-circle"></i>&nbsp;Info<span class="caret"></span></a>
           	<ul class="dropdown-menu">
             <li><a href="https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-question-circle"></i>&nbsp;Wiki</a></li>
-            <li><a href="http://forum.openstreetmap.org/viewtopic.php?id=27289" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-users"></i>&nbsp;Forum</a></li>
+            <li><a href="https://forum.openstreetmap.org/viewtopic.php?id=27289" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-users"></i>&nbsp;Forum</a></li>
             <li><a href="https://taginfo.openstreetmap.org/keys/raba%3Aid#values" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-bar-chart"></i>&nbsp;Statistics</a></li>
-            <li><a href="http://osmstats.neis-one.org/?item=countries&country=Slovenia" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-line-chart"></i>&nbsp;Activity</a></li>
-            <li><a href="http://resultmaps.neis-one.org/osm-changesets?comment=RABA-KGZ" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-pencil-square-o"></i>&nbsp;Changesets</a></li>
+            <li><a href="https://osmstats.neis-one.org/?item=countries&country=Slovenia" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-line-chart"></i>&nbsp;Activity</a></li>
+            <li><a href="https://resultmaps.neis-one.org/osm-changesets?comment=RABA-KGZ" target="_blank" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-pencil-square-o"></i>&nbsp;Changesets</a></li>
           	</ul>
             </li>
             <li><a href="javascript:unloadAllSplits()" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fa fa-trash"></i>&nbsp;Unload all</a></li>
