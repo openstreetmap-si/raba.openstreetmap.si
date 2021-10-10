@@ -103,7 +103,7 @@ function josmImportWithMeta(splitId) {
 	var josmUri= dataBaseUrl + 'raba'+splitId+'dissJosm.zip';
 	//josmLoadAndZoom(josmUri, "RABA-KGZ", "Importing split " + splitId + " from RABA-KGZ");
 	//josmLoadAndZoom(0,0,0,0, "RABA-KGZ", "Importing split " + splitId + " from RABA-KGZ");
-	josmImport(josmUri);
+	josmImport(josmUri, "RABA-KGZ", "#RABA-KGZ import split " + splitId);
 }
 
 function josmImportWithMetaForest(splitId) {

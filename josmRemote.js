@@ -34,15 +34,16 @@ function josmLoadAndZoom(left, right, top, bottom, changesetSource, changesetCom
 }
 
 
-function josmImport(uri) {
+function josmImport(uri, changesetSource, changesetComment) {
 	// GET /import?url=...
 	// https://dl.dropboxusercontent.com/u/36381923/osm/data/42diss.zip
 	//var importUrl =  baseJosmRemoteUrl + "/import?url=" + encodeURIComponent(uri);
 	var importUrl =  baseJosmRemoteUrl + "/import";
 	//$.get( importUrl, { url: uri } );
+	tags = "source="+changesetSource+"|comment="+changesetComment
         $.ajax({
                 url: importUrl,
-                data: { url: uri }
+                data: { changeset_tags: tags, url: uri }
         }).fail(function (jqXHR, textStatus, errorThrown) {
                 if(textStatus == "error" && jqXHR.status==0 && jqXHR.readyState == 0)
                 {
