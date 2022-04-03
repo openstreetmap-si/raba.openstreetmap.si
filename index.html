@@ -234,6 +234,7 @@ function loadSplit(splitId) {
 
 	//var shpUrl = 'data-20140911/raba' + splitId + 'diss.zip';
 	//var shpUrl = 'RabaSplits_20160731_EPSG4326/raba' + splitId + 'dissJosm.zip';
+	//var shpUrl = dataBaseUrl + 'raba' + splitId + 'dissJosm.zip?cb=' + Math.round(new Date().getTime() / 1000) ;
 	var shpUrl = dataBaseUrl + 'raba' + splitId + 'dissJosm.zip';
 	//var shpUrl = 'data/raba' + splitId + 'diss.zip';
 	console.log("Loading: " + shpUrl);
@@ -333,11 +334,11 @@ var blankMapLayer = L.tileLayer.provider('BlankMap');
 
 var openSnowMapLayer = L.tileLayer.provider('OpenStreetMap.openSnowMap');
 //openSnowMapLayer.addTo(map);
-WmfLabsHillshadingOverlay.addTo(map);
+//WmfLabsHillshadingOverlay.addTo(map);
 
 L.control.scale({imperial: false, maxWidth: 200}).addTo(map);
 L.control.mousePosition().addTo(map);
-//map.attributionControl.addAttribution("<a href=\"https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ\">RABA overlay<\/a> courtesy of <a href=\"http://www.mkgp.gov.si/\">Ministrstvo za kmetijstvo, gozdarstvo in prehrano<\/a>");
+//map.attributionControl.addAttribution("<a href=\"https://wiki.openstreetmap.org/wiki/Slovenia_Landcover_Import_-_RABA-KGZ\">RABA overlay<\/a> courtesy of <a href=\"https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-kmetijstvo-gozdarstvo-in-prehrano/\">Ministrstvo za kmetijstvo, gozdarstvo in prehrano<\/a>");
 map.attributionControl.setPrefix("");
 //map.attributionControl.addAttribution("<a href=\"http://www.mkgp.gov.si/\" target=\"_blank\">MKGP<\/a>");
 var gridLayer = loadGrid();
