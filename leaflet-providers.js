@@ -468,6 +468,14 @@
 					'{attribution.OpenStreetMap}, vizualization CC-By-SA 2.0 <a href="http://freemap.sk">Freemap.sk</a>'
 			}
 		},
+		freeMapOutdoors: {
+			url: 'https://outdoor.tiles.freemap.sk/{z}/{x}/{y}{r}',
+			options: {
+				attribution: '{attribution.OpenStreetMap}, Outdoor tiles by <a href="https://www.freemap.sk/" target="_blank">FreeMap.sk</a>, LIDAR data by <a href="https://www.arso.gov.si/" target="_blank">ARSO</a>',
+				minZoom: 8,
+				maxZoom: 20
+			}
+		},
 		MtbMap: {
 			url: 'https://tile.mtbmap.cz/mtbmap_tiles/{z}/{x}/{y}.png',
 			options: {
