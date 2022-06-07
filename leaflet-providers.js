@@ -511,6 +511,13 @@
 				maxZoom: 22
 			}
 		},
+		Dolines: {
+			url: 'https://wms.openstreetmap.de/tms/Dolines/{z}/{x}/{y}.png',
+			options: {
+				attribution: 'Dolines by <a href="https://dolines.org/" target="_blank">Mihevc A., Mihevc R., dolines.org</a>',
+				maxZoom: 22
+			}
+		},
 		GursDof025: {
 			url: 'https://gis.level2.si/geoserver/gwc/service/tms/1.0.0/level2%3ADOF025_latest@EPSG%3A3857@jpeg/{z}/{x}/{-y}.jpeg',
 			options: {
