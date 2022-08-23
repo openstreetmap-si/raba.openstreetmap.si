@@ -10,6 +10,7 @@ Used libraries:
 * [catiline](https://github.com/calvinmetcalf/catiline) to do shapefile parsing in the background
 * [Leaflet.MousePosition](https://github.com/ardhi/Leaflet.MousePosition) for showing geo-coordinates
 * [leaflet-hash](https://github.com/mlevans/leaflet-hash) for preserving zoom and location in the URL
+* [leaflet-fullHash](https://github.com/KoGor/leaflet-fullHash) for preserving zoom, location and selected layeers in the URL
 * [Bootstrap](https://github.com/twbs/bootstrap) for responsive site
 * [Bootleaf](https://github.com/bmcbride/bootleaf) for responsive leaflet maps
 * [jQuery](https://github.com/jquery/jquery) to help put everything together

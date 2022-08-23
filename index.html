@@ -34,7 +34,7 @@
 <script type="text/javascript" src="leaflet.shpfile.js"></script>
 
 <script type="text/javascript" src="L.Control.MousePosition.js"></script>
-<script type="text/javascript" src="leaflet-hash.js"></script>
+<script type="text/javascript" src="leaflet-fullHash.js"></script>
 <script type="text/javascript" src="josmRemote.js"></script>
 
 <!-- https://admin.tilehosting.com/geocoding/ -->
@@ -392,7 +392,7 @@ var overlays = {
 };
 
 layerControl = L.control.layers(baseLayers, overlays).addTo(map);
-var hash = new L.Hash(map);
+var hash = new L.Hash(map, layerControl.layers);
 	
 josmGetVersion();
 
